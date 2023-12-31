@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+service ServerStatus {
+    rpc GetServerStatus (Empty) returns (ServerStatusResponse) {}
+}
+
+message Empty {}
+
+message CPUUsage {
+    float usage_percentage = 1;
+}
+  
+message MemoryUsage {
+    float used_memory = 1;
+    float total_memory = 2;
+}
+  
+message DiskUsage {
+    float used_space = 1;
+    float total_space = 2;
+}
+
+message ServerStatusResponse {
+    CPUUsage cpu_usage = 1;
+    MemoryUsage memory_usage = 2;
+    DiskUsage disk_usage = 3;
+}
